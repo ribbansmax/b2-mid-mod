@@ -1,0 +1,6 @@
+<h2>Recruit Actor</h2>
+<%= form_tag "/casts", method: :post do %>
+  <%= text_field_tag "actor" %>
+  <%= hidden_field_tag :movie_id, "#{params[:id]}" %>
+  <%= submit_tag 'cast' %>
+<% end %>

@@ -5,6 +5,7 @@ describe 'Movie show page' do
   flash_flood = magic.movies.create(title: "Flash Flood", creation_year: "2017", genre: "structural")
   carrie = Actor.create(name: "Carrie Fisher", age: 45)
   mark = Actor.create(name: "Mark Hammill", age: 55)
+  james = Actor.create(name: "James Earl Jones", age: 65)
 
   Cast.create(movie_id: flash_flood.id, actor_id: mark.id)
   Cast.create(movie_id: flash_flood.id, actor_id: carrie.id)
@@ -20,5 +21,15 @@ describe 'Movie show page' do
     within "#actor-1" do
       expect(page).to have_content(carrie.name)
     end
+  end
+
+  it "can add actor to film" do
+    visit "/movies/#{flash_flood.id}"
+
+    fill_in "actor", with: "James Earl Jones"
+
+    click_on "cast"
+
+    expect(page).to have_content(james.name)
   end
 end
