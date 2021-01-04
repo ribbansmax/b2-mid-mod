@@ -24,5 +24,9 @@ RSpec.describe Actor, type: :model do
       # skywalkers = Actor.limit(2)
       # expect(skywalkers.average_age).to eq(50)
     end
+
+    it "lists costars" do
+
+    end
   end
 end

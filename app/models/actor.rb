@@ -6,4 +6,9 @@ class Actor < ApplicationRecord
   def self.average_age
     self.average(:age)
   end
+
+  def costars
+    costars = movies.joins(:actors).distinct.pluck(:name)
+    costars.delete(self.name)
+  end
 end
